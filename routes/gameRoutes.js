@@ -2,14 +2,27 @@ const express = require("express");
 const router = express.Router();
 const db = require("../config/db");
 
+// SAVE GAME
 router.post("/save", (req, res) => {
-    const { winner } = req.body;
+    if (!db) return res.json({ message: "DB disabled" });
 
-    const sql = "INSERT INTO games (winner) VALUES (?)";
+    db.query(
+        "INSERT INTO games (winner) VALUES (?)",
+        [req.body.winner],
+        (err) => {
+            if (err) return res.json({ message: "DB error" });
+            res.json({ message: "Saved" });
+        }
+    );
+});
 
-    db.query(sql, [winner], (err, result) => {
-        if (err) throw err;
-        res.json({ message: "Game saved!" });
+// GET HISTORY
+router.get("/history", (req, res) => {
+    if (!db) return res.json([]);
+
+    db.query("SELECT * FROM games", (err, result) => {
+        if (err) return res.json([]);
+        res.json(result);
     });
 });
 
