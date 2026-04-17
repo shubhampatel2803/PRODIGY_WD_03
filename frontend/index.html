@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Tic Tac Toe Pro</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="container">
+
+    <div id="board" class="board"></div>
+
+    <div class="info">
+        <h1>Tic Tac Toe</h1>
+
+        <input id="playerName" placeholder="Your Name">
+
+        <select id="mode">
+            <option value="ai">AI Mode</option>
+            <option value="multi">Multiplayer</option>
+        </select>
+
+        <div>
+            <input id="roomCode" placeholder="Room Code">
+            <button onclick="createRoom()">Create</button>
+            <button onclick="joinRoom()">Join</button>
+        </div>
+
+        <h2 id="status">Player X Turn</h2>
+
+        <h3>Scoreboard</h3>
+        <p>X: <span id="xWins">0</span></p>
+        <p>O: <span id="oWins">0</span></p>
+        <p>Draw: <span id="draws">0</span></p>
+
+        <button onclick="restartGame()">Restart</button>
+
+        <a href="history.html">View History</a>
+    </div>
+
+</div>
+
+<script src="script.js"></script>
+
+</body>
+</html>
+<!-- update -->

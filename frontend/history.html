@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<h1>Game History</h1>
+<ul id="list"></ul>
+
+<script>
+const list = document.getElementById("list");
+
+// ✅ LOAD LOCAL HISTORY
+let history = JSON.parse(localStorage.getItem("history")) || [];
+
+history.reverse().forEach(game => {
+    let li = document.createElement("li");
+    li.textContent = `Winner: ${game.winner} | ${game.time}`;
+    list.appendChild(li);
+});
+</script>
+
+</body>
+</html>
