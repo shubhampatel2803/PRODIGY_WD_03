@@ -37,3 +37,6 @@ io.on("connection",(socket)=>{
 });
 
 server.listen(5000,()=>console.log("Server running"));
+app.get("/", (req, res) => {
+    res.send("Tic Tac Toe Backend Running 🚀");
+});
